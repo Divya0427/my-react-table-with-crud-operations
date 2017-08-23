@@ -24,6 +24,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "glamor": "^2.20.40",
+    "jquery": "^3.2.1",
     "react-bootstrap": "^0.31.2",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"

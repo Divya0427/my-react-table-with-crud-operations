@@ -11,6 +11,7 @@ const tableHeaders = ["Month", "Expenses", "Action"];
 const tableRows = [{
 						"month": "Jan",
 						"expenses": "12 Units",
+						"contentEditable": false,
 						"editButton": {
 							"showButton": true,
 							"buttonText": "Edit",
@@ -25,6 +26,7 @@ const tableRows = [{
 					},{
 						"month": "Feb",
 						"expenses": "27 Units",
+						"contentEditable": false,
 						"editButton": {
 							"showButton": true,
 							"buttonText": "Edit",
@@ -38,6 +40,7 @@ const tableRows = [{
 					},{
 						"month": "Mar",
 						"expenses": "16 Units",
+						"contentEditable": false,
 						"editButton": {
 							"showButton": true,
 							"buttonText": "Edit",
@@ -51,6 +54,7 @@ const tableRows = [{
 					},{
 						"month": "Apr",
 						"expenses": "17 Units",
+						"contentEditable": false,
 						"editButton": {
 							"showButton": true,
 							"buttonText": "Edit",
