@@ -1,27 +1,44 @@
 import React from 'react';
 import { render } from 'react-dom';
+import ButtonComponent from '../ButtonComponent/ButtonComponent';
+
+//???In this component, I have data in both props and state; Which one would be preferred
+//???How to add handlers to a button in a better way
 
 export default class TableBody extends React.Component{
-	constructor(props) {
-		super(props);
-		/*this.onRemoveRow = this.onRemoveRow.bind(this, index);*/
-	}
-	onRemoveRow(e, index) {
-		console.log(e);
-		console.log(index);
-	}
+    constructor(props) {
+        super(props);
+        this.state = {
+        	bodyData: this.props.bodyData
+        }
+        this.onRemoveRow = this._onRemoveRow.bind(this);
+    }
+
+    _onRemoveRow(index) {
+        delete this.props.bodyData[index];
+        this.setState({
+        	'bodyData': this.props.bodyData
+        })
+    }
   render() {
-  	var tBodyTag = this.props.bodyData.map((rowData, index) =>
-		<tr key={index}>
-			{Object.keys(rowData).map(function(column, index) {
-			    return  rowData[column] === true ? <button key={index} className="btn btn-danger btn-sm" onClick={onRemoveRow.bind(this, {index})}>Delete</button> : <td key={index}>{rowData[column]}</td>
-			})}
-		</tr>
-	);
+      var tBodyTag = this.state.bodyData.map((rowData, rowIndex) => {
+        return ( <tr key={rowIndex}>
+            {Object.keys(rowData).map((column, index) => {
+                /*return rowData[column] === true ? 
+                	<td key={index}><button key={index} className="btn btn-danger btn-sm" onClick={() => this.onRemoveRow(rowIndex)}>Delete</button></td>
+                	: <td key={index}>{rowData[column]}</td>*/
+                	console.log()
+                return rowData[column] && rowData[column].showButton === true ? 
+                	<td key={index}><ButtonComponent buttonData={rowData[column]} rowIndex={rowIndex} eventHandler={this.onRemoveRow}></ButtonComponent></td>
+                	: <td key={index}>{rowData[column]}</td>
+            })}
+        </tr> );
+      });
+
     return (
-	    <tbody>
-			{tBodyTag}
-		</tbody>
+        <tbody>
+            {tBodyTag}
+        </tbody>
     )
   }
 }

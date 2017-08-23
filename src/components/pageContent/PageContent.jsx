@@ -11,19 +11,56 @@ const tableHeaders = ["Month", "Expenses", "Action"];
 const tableRows = [{
 						"month": "Jan",
 						"expenses": "12 Units",
-						"isRemovable": true
+						"editButton": {
+							"showButton": true,
+							"buttonText": "Edit",
+							"decorators": "btn btn-primary"
+						},
+						"removeButton": {
+							"showButton": true,
+							"buttonText": "Delete",
+							"decorators": "btn btn-danger"
+						}
+
 					},{
 						"month": "Feb",
 						"expenses": "27 Units",
-						"isRemovable": true
+						"editButton": {
+							"showButton": true,
+							"buttonText": "Edit",
+							"decorators": "btn btn-primary"
+						},
+						"removeButton": {
+							"showButton": true,
+							"buttonText": "Delete",
+							"decorators": "btn btn-danger"
+						}
 					},{
 						"month": "Mar",
 						"expenses": "16 Units",
-						"isRemovable": true
+						"editButton": {
+							"showButton": true,
+							"buttonText": "Edit",
+							"decorators": "btn btn-primary"
+						},
+						"removeButton": {
+							"showButton": true,
+							"buttonText": "Delete",
+							"decorators": "btn btn-danger"
+						}
 					},{
 						"month": "Apr",
 						"expenses": "17 Units",
-						"isRemovable": true
+						"editButton": {
+							"showButton": true,
+							"buttonText": "Edit",
+							"decorators": "btn btn-primary"
+						},
+						"removeButton": {
+							"showButton": true,
+							"buttonText": "Delete",
+							"decorators": "btn btn-danger"
+						}
 					}];
 const users = [
     {
