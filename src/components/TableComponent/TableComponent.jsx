@@ -1,10 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import TableHeader from '../TableHeader/TableHeader';
-import TableBody from '../TableBody/TableBody';
+import TableHeader from './TableHeader';
+import TableBody from './TableBody';
 
 export default class TableComponent extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
 		return(
 			<table className={this.props.decorators}>

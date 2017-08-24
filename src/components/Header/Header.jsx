@@ -5,7 +5,7 @@ const headerText = 'Getting this';
 const Header = (props) => (
 	<div className='Header'>      
 	{/*<h1>{headerText}{this.props.heading}</h1>*/}
-	<h1>{props.heading}</h1>
+	<h3>{props.heading}</h3>
 	</div>
 );
 

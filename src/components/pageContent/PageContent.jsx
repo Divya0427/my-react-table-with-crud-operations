@@ -1,174 +1,121 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Header from '../Header/Header';
-import List from '../List/List';
 import TableComponent from '../TableComponent/TableComponent';
+import ButtonComponent from '../ButtonComponent/ButtonComponent';
 
 //TODO:: Make it functional component as this is stateless if we can have stateful components inside stateless component
 
 const employeesListHeading = "List of Employees";
-const tableHeaders = ["Month", "Expenses", "Action"];
+// const tableHeaders = ["Month", "Expenses", "Action"];
+const tableHeaders = [{
+	heading: 'Month'
+},{
+	heading: 'Expenses'
+},{
+	heading: 'Actions',
+	colSpan: 2
+}];
 const tableRows = [{
 						"month": "Jan",
 						"expenses": "12 Units",
-						"contentEditable": false,
 						"editButton": {
 							"showButton": true,
+							"decorators": "btn btn-primary",
 							"buttonText": "Edit",
-							"decorators": "btn btn-primary"
+							"handler": "this.edit"
 						},
 						"removeButton": {
 							"showButton": true,
-							"buttonText": "Delete",
-							"decorators": "btn btn-danger"
+							"decorators": "btn btn-danger",
+							"buttonText": "Delete"
 						}
 
 					},{
 						"month": "Feb",
 						"expenses": "27 Units",
-						"contentEditable": false,
 						"editButton": {
 							"showButton": true,
-							"buttonText": "Edit",
-							"decorators": "btn btn-primary"
+							"decorators": "btn btn-primary",
+							"buttonText": "Edit"
 						},
 						"removeButton": {
 							"showButton": true,
-							"buttonText": "Delete",
-							"decorators": "btn btn-danger"
+							"decorators": "btn btn-danger",
+							"buttonText": "Delete"
 						}
 					},{
 						"month": "Mar",
 						"expenses": "16 Units",
-						"contentEditable": false,
 						"editButton": {
 							"showButton": true,
-							"buttonText": "Edit",
-							"decorators": "btn btn-primary"
+							"decorators": "btn btn-primary",
+							"buttonText": "Edit"
 						},
 						"removeButton": {
 							"showButton": true,
-							"buttonText": "Delete",
-							"decorators": "btn btn-danger"
+							"decorators": "btn btn-danger",
+							"buttonText": "Delete"
 						}
 					},{
 						"month": "Apr",
 						"expenses": "17 Units",
-						"contentEditable": false,
 						"editButton": {
 							"showButton": true,
-							"buttonText": "Edit",
-							"decorators": "btn btn-primary"
+							"decorators": "btn btn-primary",
+							"buttonText": "Edit"
 						},
 						"removeButton": {
 							"showButton": true,
-							"buttonText": "Delete",
-							"decorators": "btn btn-danger"
+							"decorators": "btn btn-danger",
+							"buttonText": "Delete"
 						}
 					}];
-const users = [
-    {
-      "userName": "dyakkala",
-      "id": "VLT1886",
-      "displayName": "Divya"
-    },
-    {
-      "userName": "byakkala",
-      "id": "VLTXXXX",
-      "displayName": "Bhargavi"
-    }
-  ];
 
+const addButton = {
+							"showButton": true,
+							"decorators": "btn btn-success pull-right",
+							"buttonText": "Add"
+						}
 export default class PageContent extends React.Component {
 	constructor(props) {
 		super(props);
+		this.addRow = this._addRow.bind(this);
 		this.state = {
-			employeesListHeading: "Editable List",
-			showInputField: false,
-			employee1: {
-			      "userName": "dyakkala",
-			      "id": "VLT1886",
-			      "displayName": "Divya",
-			      "editOption": true
-			    },
-		    employee2: {
-		      "userName": "byakkala",
-		      "id": "VLTXXXX",
-		      "displayName": "Bhargavi",
-		      "editOption": true
-		    },
-		    employee3: {
-			      "userName": "dyakkala",
-			      "id": "VLT123",
-			      "displayName": "Pokemon",
-			      "editOption": false
-			    },
-			employees: [{
-			      "userName": "dyakkala",
-			      "id": "VLT1886",
-			      "displayName": "Divya"
-			    },
-			    {
-			      "userName": "byakkala",
-			      "id": "VLTXXXX",
-			      "displayName": "Bhargavi"
-			    }]
-		}
-		this.onNameEdit = this.onNameEdit.bind(this);
-		this.updateName = this.updateName.bind(this);
-	}
+			tableRows: tableRows
+		}	
+	}	
 
-	onNameEdit(e) {
-		/*console.log(e.target.parentElement);*/
-		this.setState(
-		{
-			'showInputField': true
-		});
-		
-		console.log(this.state)
-	}
-
-	updateName(e) {
-		console.log(e.target.value);
+	_addRow() {
+		tableRows.push({
+					"month": "MAY",
+					"expenses": "12 UNITS",
+					"editButton": {
+						"showButton": true,
+						"decorators": "btn btn-primary",
+						"buttonText": "Edit"
+					},
+					"removeButton": {
+						"showButton": true,
+						"decorators": "btn btn-danger",
+						"buttonText": "Delete"
+					}}
+			)
+		this.setState({'tableRows': this.state.tableRows});
 	}
 
 
-	render () {
-		/*if(this.props.isEditable) {
+	//::TODO::Add lifecycle methods to check the order
+	componentDidMount(){
+		console.log("mounted!!");
+	}
 
-		} else {
-
-		}*/
-		var showInputField = this.state.showInputField;
-		var showRelatedInputField = this.state.showRelatedInputField;
+	render () {		
 		return (
-			<div className="page-container">
-				<div className="usersList">
-					<Header heading={employeesListHeading}/>
-					{showInputField}
-			    	<ul>
-			        	{users.map(user => 
-			        		<li key={user.id}>{user.userName}({user.id}) -
-				        		<span>{user.displayName} | 
-				        			<a href="#" key={user.id} onClick={this.onNameEdit}>Edit Name</a>{showInputField}
-				        			{showInputField ? 
-				        				<input type="text" onKeyUp={this.updateName}/>
-				        				: null
-				        			}
-				        		</span>
-				        	</li>
-				        )}
-			      	</ul>
-			      	<hr/>
-			      	<Header heading={this.state.employeesListHeading}/>
-			      	<ul className="list-unstyled">
-			        	<List options={this.state.employee1}/>
-			        	<List options={this.state.employee2}/>
-			        	<List options={this.state.employee3}/>
-			      	</ul>
-				</div>
-				<div className="table-container">
-					<TableComponent decorators="table table-striped" headers={tableHeaders} bodyData={tableRows}/>					
+			<div className="page-container container-fluid">
+				<ButtonComponent buttonData={addButton} eventHandler={this.addRow}/>
+				<div className="table-container row">
+					<TableComponent decorators="table table-bordered monthly-expenses-table" headers={tableHeaders} bodyData={this.state.tableRows}/>
 				</div>
 			</div>
 		);

@@ -1,8 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const ButtonComponent = (props) => (
-	<button className={props.buttonData.decorators} onClick={() => props.eventHandler(props.rowIndex, props.buttonData.buttonText)}>{props.buttonData.buttonText}</button>
-);
+export default class ButtonComponent extends React.Component{
+	constructor(props) {
+		super(props);
+		console.log(props);
+	}
+	render() {
+		return (
+			<button className={this.props.buttonData.decorators} onClick={this.props.eventHandler}>{this.props.buttonData.buttonText}</button>
+		)
+	}
+};
 
-export default ButtonComponent;
