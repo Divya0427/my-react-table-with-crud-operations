@@ -21,7 +21,7 @@ export default class TableBody extends React.Component{
     _handleClick(index){
         // Edit row
         $('.monthly-expenses-table tbody tr td').removeAttr('contentEditable');
-        $($('.monthly-expenses-table tbody tr')[index]).find('td').attr('contentEditable', true);
+        $($('.monthly-expenses-table tbody tr')[index]).find('td.table-column').attr('contentEditable', true);
         /*$('td[contentEditable="true"]').css('border', 'solid 3px lightblue');*/
 
         /*

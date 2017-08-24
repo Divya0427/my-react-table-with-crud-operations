@@ -26,8 +26,9 @@ const TableColumn = (props) => {
 	}*/
 
 	//var contentEditable = (props.colData && props.colData.contentEditable) ? true : undefined;
+	const tdClass = props.colData.showButton ? undefined : 'table-column';
 	return (
-		<td>
+		<td className={tdClass}>
 			{(props.colData.showButton) ? <ButtonComponent buttonData={props.colData} eventHandler={props.eventHandler}/> : props.colData}
 		</td>
 	);
